@@ -1,5 +1,7 @@
+(function () {
+'use strict';
 // Illustrative recipe data. Prices and nutrition are not verified dietary guidance.
-export const recipes = [
+const recipes = [
   {
     slug: 'lemon-chicken-rice-bowls', title: 'Lemon Chicken & Rice Bowls', description: 'Juicy lemon chicken, fluffy rice, and crisp cucumber. A little prep, a lot to look forward to.', intro: 'Meet your new lunch-on-repeat. Golden chicken, warm chickpeas, and a lemony yogurt drizzle make a simple bowl feel like something special. Cook once, and you have four satisfying meals ready to go.', cost: 1.48, protein: 42, calories: 510, carbs: 54, fat: 14, fiber: 6, prep: 10, cook: 20, servings: 4, photo: 0, tags: ['40g+ Protein', 'Meal Prep'], label: 'THE EVERYDAY FAVORITE',
     ingredients: [
@@ -28,11 +30,14 @@ export const recipes = [
     steps: [['Cook the pasta', 'Boil the pasta according to the package directions. Reserve 1 cup of cooking water before draining.'], ['Make a creamy base', 'Mash or blend half the beans with the yogurt and half a cup of pasta water.'], ['Warm the greens', 'Heat oil in a large skillet. Cook the garlic for 30 seconds, add the spinach, and cook until hot throughout. Stir in the remaining beans.'], ['Bring it together', 'Remove the skillet from the heat. Fold in the pasta and bean sauce, adding pasta water a splash at a time. Stir in Parmesan and season to taste.']], tip: 'Add the yogurt sauce off the heat to keep it smooth. Refrigerate leftovers for up to 3 days; reheat gently with a splash of water.'
   }
 ];
-export const categories = [
+const categories = [
   { name: 'Under $1', filter: 'under-1', icon: 'coin', text: 'Small spend. Big satisfaction.' },
   { name: 'Under $1.50', filter: 'under-150', icon: 'wallet', text: 'Your budget-friendly sweet spot.' },
   { name: '40g+ Protein', filter: 'high-protein', icon: 'bolt', text: 'A little extra staying power.' },
   { name: '20-Minute Meals', filter: 'quick', icon: 'clock', text: 'Real food. Less waiting.' },
   { name: 'Meal Prep', filter: 'meal-prep', icon: 'box', text: 'A good week starts here.' }
 ];
-export const matches = (r, filter) => filter === 'under-1' ? r.cost < 1 : filter === 'high-protein' ? r.protein >= 40 : filter === 'quick' ? r.prep + r.cook <= 20 : filter === 'meal-prep' ? r.tags.includes('Meal Prep') : true;
+const matches = (r, filter) => filter === 'under-1' ? r.cost < 1 : filter === 'high-protein' ? r.protein >= 40 : filter === 'quick' ? r.prep + r.cook <= 20 : filter === 'meal-prep' ? r.tags.includes('Meal Prep') : true;
+
+window.LeanForLess = { recipes, categories, matches };
+})();
